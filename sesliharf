@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+using namespace std;
+
+void harfSayilari(string metin) {
+    int sesliHarfSayisi = 0, sessizHarfSayisi = 0, rakamSayisi = 0, boslukSayisi = 0;
+
+    for (char harf : metin) {
+        if (harf) {
+           
+            if (harf == 'a' || harf == 'e' || harf == 'i' || harf == 'o' || harf == 'u') {
+                sesliHarfSayisi++;
+            } else {
+                sessizHarfSayisi++;
+            }
+        } else if (harf) {
+            rakamSayisi++;
+        } else if (harf) {
+            boslukSayisi++;
+        }
+    }
+
+    cout << "Sesli harf sayisi: " << sesliHarfSayisi << endl;
+    cout << "Sessiz harf sayisi: " << sessizHarfSayisi << endl;
+    cout << "Rakam sayisi: " << rakamSayisi << endl;
+    cout << "Bosluk sayisi: " << boslukSayisi << endl;
+}
+
+int main() {
+    string metin;
+    cout << "Bir metin girin: ";
+    getline(cin, metin);
+
+    harfSayilari(metin);
+
+    return 0;
+}
+
