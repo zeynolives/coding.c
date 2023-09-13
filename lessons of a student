@@ -1,0 +1,60 @@
+#include <iostream>
+
+using namespace std;
+class Student {
+  private:
+  int math,algo,physic;
+  
+  public:
+  Student():math(5),algo(2),physic(0){
+  }
+  Student(int x,int y,int z):math(x),algo(y),physic(z){}
+ 
+  void GetStudentInfo(){
+    cout<<"enter math:";
+    cin>>math;
+    cout<<"enter algo :";
+    cin>>algo;
+    cout<<"enter phy:";
+    cin>>physic;
+  void DisplayInfo(){
+     cout<<"math:"<<math;
+     cout<<"algo:"<<algo;
+     cout<<"physic:"<<physic;
+  }
+ int average(){
+         int res=(math+algo+physic)/3;
+         return res;
+  }
+  void DisplayAverage(int res){
+     cout<<"sudent average:"<<averag<<endl;
+  }
+  void Compare(Student S1){
+        
+        if(this->avg()>S1.avg()){
+            cout<<"S1 is bigger than S3";
+        }
+        else{
+            cout<<"s1 is less than s3";
+        }
+  }
+};
+int main()
+{
+    Student Student1();
+    Student1.DisplayInfo();
+    
+    Student Student2(40,50,2);
+    Student2.DisplayInfo();
+    
+    Student Student3();
+    S3.GetStudentInfo();
+     
+    int res1=Student1.avg();
+    
+    
+Student1.compare(Student2);
+Student1.compare(Student3);
+Student2.compare(Student3);
+    return 0;
+}
