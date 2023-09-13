@@ -1,0 +1,74 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
+C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <iostream>
+#include <string>
+
+class Vehicle {
+    std::string mark;
+    std::string date_of_purchase;
+    int purchase_price;
+    int current_price;
+public:
+    Vehicle(std::string mark, std::string date_of_purchase, int purchase_price, int current_price) {
+        this->mark = mark;
+        this->date_of_purchase = date_of_purchase;
+        this->purchase_price = purchase_price;
+        this->current_price = current_price;
+    }
+    void display() {
+        std::cout << "Mark: " << mark << std::endl;
+        std::cout << "Date of purchase: " << date_of_purchase << std::endl;
+        std::cout << "Purchase price: " << purchase_price << std::endl;
+        std::cout << "Current price: " << current_price << std::endl;
+    }
+};
+class Car : public Vehicle {
+    double cubic_capacity;
+    int num_doors;
+    int power;
+public:
+    Car(std::string mark, std::string date_of_purchase, int purchase_price, int current_price, double cubic_capacity, int num_doors, int power)
+        : Vehicle(mark, date_of_purchase, purchase_price, current_price) {
+        this->cubic_capacity = cubic_capacity;
+        this->num_doors = num_doors;
+        this->power = power;
+    }
+    void display() {
+        Vehicle::display();
+        std::cout << "Cubic capacity: " << cubic_capacity << std::endl;
+        std::cout << "Number of doors: " << num_doors << std::endl;
+        std::cout << "Power: " << power << std::endl;
+    }
+};
+
+class Plane : public Vehicle {
+    std::string plane_type;
+    int flight_hours;
+public:
+    Plane(std::string mark, std::string date_of_purchase, int purchase_price, int current_price, std::string plane_type, int flight_hours)
+        : Vehicle(mark, date_of_purchase, purchase_price, current_price) {
+        this->plane_type = plane_type;
+        this->flight_hours = flight_hours;
+    }
+    void display() {
+        Vehicle::display();
+        std::cout << "Type of plane: " << plane_type << std::endl;
+        std::cout << "Flight hours: " << flight_hours << std::endl;
+    }
+};
+int main() {
+    Car car("b", "20.10.1972", 20000, 18000, 2.5, 4, 200);
+    car.display();
+
+    Plane plane("a", "12.05.1947", 500, 400, "1", 2000);
+    plane.display();
+
+    return 0;
+}
+
