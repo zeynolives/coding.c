@@ -1,0 +1,135 @@
+#include <iostream>
+using namespace std;
+
+class Time {
+private:
+    int hours;
+    int minutes;
+    int seconds;
+
+public:
+    // Default constructor
+    Time() {
+        hours = 5;
+        minutes = 38;
+        seconds = 59;
+    }
+    Time(int a,int b,int c):hours(a),minutes(b),seconds(c){}
+
+    //adding hours
+    void AddHour() {
+        int newHours;
+        cout << "Enter the number of hours to add:";
+        cin >> newHours;
+        while (newHours < 0) {
+            cout << "Invalid value. Please enter a positive number of hours: ";
+            cin >> newHours;
+        }
+        hours += newHours;
+    }
+    void DisplayTime() {
+        cout << hours << ":" << minutes << ":" << seconds << endl;
+    }
+    void DisplayHours() {
+        cout << "Hours: " << hours << endl;
+    }
+    void DisplayMinutes() {
+        cout << "Minutes: " << minutes << endl;
+    }
+    void DisplaySeconds() {
+        cout << "Seconds: " << seconds << endl;
+    }
+    friend Time AddTimes(const Time& t1, const Time& t2) {
+        int totalMinutes = (t1.hours * 60 + t1.minutes) + (t2.hours * 60 + t2.minutes);
+        int finalHours = totalMinutes / 60;
+        int finalMinutes = totalMinutes % 60;
+        int finalSeconds = t1.seconds + t2.seconds;
+
+        if (finalSeconds >= 60) {
+            finalMinutes++;
+            finalSeconds -= 60;
+        }
+
+        if (finalMinutes >= 60) {
+            finalHours++;
+            finalMinutes -= 60;
+        }
+
+        Time result;
+        result.hours = finalHours;
+        result.minutes = finalMinutes;
+        result.seconds = finalSeconds;
+        return result;
+    }
+    friend int CompareTimes(const Time& t1, const Time& t2) {
+        if (t1.hours > t2.hours)
+            return 1;
+        else if (t1.hours < t2.hours)
+            return -1;
+        else {
+            if (t1.minutes > t2.minutes)
+                return 1;
+            else if (t1.minutes < t2.minutes)
+                return -1;
+            else {
+                if (t1.seconds > t2.seconds)
+                    return 1;
+                else if (t1.seconds < t2.seconds)
+                    return -1;
+                else
+                    return 0;
+            }
+        }
+    }
+    void ChangeTime(int deltaSeconds) {
+        int totalSeconds = hours * 3600 + minutes * 60 + seconds;/*bütün saniyeler*/
+        totalSeconds += deltaSeconds;
+
+        if (totalSeconds < 0)
+            totalSeconds = 0;
+            
+        hours = totalSeconds / 3600;
+        minutes = (totalSeconds % 3600) / 60;
+        seconds = (totalSeconds % 3600) % 60;
+    }
+};
+
+int main() {
+    Time t1;
+    cout<<"first time:";
+    t1.DisplayTime();
+
+    t1.AddHour();
+    cout<<"after adding:";
+    t1.DisplayTime();
+
+    Time t2(0,26,53);
+    cout<<"other time:";
+    t2.DisplayTime();
+
+    Time t3 = AddTimes(t1, t2);
+    cout<<"sum of times:";
+    t3.DisplayTime();
+
+    cout<<"result of comparison between times:";
+    int comparison = CompareTimes(t1, t2);
+    if (comparison == 1)
+        cout << "t1 is larger than t2" << endl;
+    else if (comparison == -1)
+        cout << "t1 is smaller than t2" << endl;
+    else
+        cout << "t1 is equal to t2" << endl;
+ 
+ 
+    t1.ChangeTime(50);
+    cout<<"after increasing time 50:";
+    t1.DisplayTime();
+
+    t2.ChangeTime(-56);
+    cout<<"after decrasing time 56:";
+    t2.DisplayTime();
+
+    return 0;
+}
+
+
