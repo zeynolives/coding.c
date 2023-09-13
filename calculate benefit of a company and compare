@@ -1,0 +1,102 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Company {
+  private:
+    string name;
+    int registeredNum;
+    double bSemestr1, bSemestr2, bSemestr3;
+    double annualBenefit;
+    
+  public:
+    Company() {
+        name = "istanbul";
+        registeredNum = 001;
+        bSemestr1 = 100;
+        bSemestr2 = 100;
+        bSemestr3 = 100;
+    }
+    
+    Company(string n, int r, double b1, double b2, double b3) {
+        name = n;
+        registeredNum = r;
+        bSemestr1 = b1;
+        bSemestr2 = b2;
+        bSemestr3 = b3;
+    }
+    
+    void GetCompanyInfo() {
+        cout << "Name: ";
+        cin >> name;
+        cout << "Registered Number: ";
+        cin >> registeredNum;
+        cout << "Benefit for Semester 1: ";
+        cin >> bSemestr1;
+        cout << "Benefit for Semester 2: ";
+        cin >> bSemestr2;
+        cout << "Benefit for Semester 3: ";
+        cin >> bSemestr3;
+    }
+    
+    void DisplayCompanyInfo() {
+        cout << "Name: " << name << endl;
+        cout << "Registered Number: " << registeredNum << endl;
+        cout << "Benefit for Semester 1: " << bSemestr1 << endl;
+        cout << "Benefit for Semester 2: " << bSemestr2 << endl;
+        cout << "Benefit for Semester 3: " << bSemestr3 << endl;
+    }
+    
+    void CalculateAnnualBenefit() {
+        annualBenefit = bSemestr1 + bSemestr2 + bSemestr3;
+    }
+    
+    void DisplayAnnualBenefit() {
+        cout << "Annual Benefit: " << annualBenefit << endl;
+    }
+    
+    bool CompareBenefit(Company c) {
+        return annualBenefit > c.annualBenefit;
+    }
+};
+
+int main() {
+    Company c1;
+    Company c2("Elimsan", 150825, 800000, 500000, 250000);
+    Company c3;
+    
+    cout << "Enter details for company 3:" << endl;
+    c3.GetCompanyInfo();
+    
+    c1.CalculateAnnualBenefit();
+    c2.CalculateAnnualBenefit();
+    c3.CalculateAnnualBenefit();
+    
+    cout << "Company 1:" << endl;
+    c1.DisplayCompanyInfo();
+    c1.DisplayAnnualBenefit();
+    
+    cout << "Company 2:" << endl;
+    c2.DisplayCompanyInfo();
+    c2.DisplayAnnualBenefit();
+    
+    cout << "Company 3:" << endl;
+    c3.DisplayCompanyInfo();
+    c3.DisplayAnnualBenefit();
+    
+    if (c1.CompareBenefit(c2)) {
+        cout << "Company 1 has a higher annual benefit than Company 2." << endl;
+    } else {
+        cout << "Company 2 has a higher annual benefit than Company 1." << endl;
+    }
+    
+    if (c1.CompareBenefit(c3)) {
+        cout << "Company 1 has a higher annual benefit than Company 3." << endl;
+    } else {
+        cout << "Company 3 has a higher annual benefit than Company 1." << endl;
+    }
+    
+    if (c2.CompareBenefit(c3)) {
+        cout << "Company 2 has a higher annual benefit than Company";}
+        return 0;}
