@@ -1,0 +1,37 @@
+#include <iostream>
+
+using namespace std;
+
+void removeVowels(char* str, bool rplace) {
+    int i = 0, j = 0;
+    char c;
+    while (str[i]) {
+        c = str[i];
+        if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' || c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U') {
+            if (rplace) {
+                str[j] = '.';
+                j++;
+            }
+        } else {
+            str[j] = c;
+            j++;
+        }
+        i++;
+    }
+    str[j] = '\0'; // Yeni son karakter
+}
+
+int main() {
+    char str[100];
+
+    cout << "Bir metin girin: ";
+    cin >> str;
+
+    removeVowels(str,true);/*true for bool rplace*/
+    cout << "Sesli harfler '.' ile değiştirildi: " << str << endl;
+
+    removeVowels(str,false); /*false for bol rplace*/
+    cout << "Sesli harfler kaldırıldı: " << str << endl;
+
+    return 0;
+}
