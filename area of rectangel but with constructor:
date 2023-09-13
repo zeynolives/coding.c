@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+class Area{
+    int lenght;
+    int breadht;
+    public:
+    Area():lenght(5),breadht(2){
+        
+    }
+    void GetLenghtBreadht(){
+        cout<<"please enter the values of lenght and breadht:";
+        cin>>lenght>>breadht;
+    }
+    int AreaCalculation()
+    {
+        return(lenght*breadht);
+    }
+    void Display(int temp){
+        cout<<"area :"<<temp<<endl;
+    }
+};
+
+int main()
+{
+    Area A1,A2;
+    int temp;
+    
+    temp=A1.AreaCalculation();
+    A1.Display(temp);
+    
+   temp=A2.AreaCalculation();
+    A2.Display(temp);
+    
+    A1.GetLenghtBreadht();
+     
+    temp=A1.AreaCalculation();
+    A1.Display(temp);
+    
+   
+
+    return 0;
+}
+
