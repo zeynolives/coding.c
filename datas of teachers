@@ -1,0 +1,77 @@
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Teacher {
+private:
+    string name;
+    int age;
+    string hiring_date;
+    double salary;
+
+public:
+    Teacher() : name("No name"), age(0), hiring_date("N/A"), salary(0) {}
+    Teacher(string n, int a, string hd, double s) : name(n), age(a), hiring_date(hd), salary(s) {}
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Hiring Date: " << hiring_date << endl;
+        cout << "Salary: " << salary << endl;
+    }
+    bool compare_experience(Teacher t) {
+        return this->hiring_date < t.hiring_date;
+    }
+    bool compare_salary(Teacher t) {
+        return this->salary > t.salary;
+    }
+};
+class Engineer {
+private:
+    string name;
+    int age;
+    int experience;
+    double salary;
+
+   public:
+    Engineer() : name("No name"), age(0), experience(0), salary(0) {}
+    Engineer(string n, int a, int exp, double s) : name(n), age(a), experience(exp), salary(s) {}
+
+    void display() {
+        cout << "Name: " << name << endl;
+        cout << "Age: " << age << endl;
+        cout << "Experience: " << experience << endl;
+        cout << "Salary: " << salary << endl;
+    }
+    bool compare_experience(Engineer e) {
+        return this->experience > e.experience;
+    }
+    bool compare_salary(Engineer e) {
+        return this->salary > e.salary;
+    }
+};
+
+int main() {
+    
+    Teacher t1;
+    Teacher t2("Ali", 40, "01/01/2018", 80000);
+    Engineer e1("ayşe", 52, 10, 70000);
+    Engineer e2("jen", 25, 8, 90000);
+    cout << "Teacher 1:" << endl;
+    t1.display();
+    cout << endl;
+    cout << "Teacher 2:" << endl;
+    t2.display();
+    cout << endl;
+    cout << "Engineer 1:" << endl;
+    e1.display();
+    cout << endl;
+    cout << "Engineer 2:" << endl;
+    e2.display();
+    cout << endl;
+    cout << "Experience  comp between Teacher 1 and Teacher 2: " << t1.compare_experience(t2) << endl;
+    cout << "Salary comp between Teacher 1 and Teacher 2: " << t1.compare_salary(t2) << endl;
+    cout << "Experience comp between Engineer 1 and Engineer 2: " << e1.compare_experience(e2) << endl;
+    cout << "Salary comp between Engineer 1 and 2:"<<e2.compare_salary(e1)<<endl;
+}
