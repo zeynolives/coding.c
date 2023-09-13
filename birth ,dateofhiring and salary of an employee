@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+class Employee{
+    private:
+    int registrationNumber;
+    string name;
+    string surname;
+    int dateOfBirth;
+    int dateOfHiring;
+    double salary;
+    public:    
+    void AddEmployee1(int m, string n, string p, int dn, int dp, double s)    
+    {
+    registrationNumber=m;
+    name=n;
+    surname=p;
+     dateOfBirth=dn;
+    dateOfHiring=dp;
+    salary=s;
+    }
+    void AddEmployee2()    
+    {
+        cout<<"please enter registration number";
+        cin>>registrationNumber;
+        cout<<"please enter name";
+        cin>>name;
+        cout<<"please enter surname";
+        cin>>surname;
+        cout<<"please enter dateofbirth";
+        cin>>dateOfBirth;
+        cout<<"please enter dateofhiring";
+        cin>>dateOfHiring;
+        cout<<"please enter salary";
+        cin>>salary;    
+    }
+    int Age()
+    {
+        int age;
+        age=2023-dateOfBirth;
+         return age;
+    }
+    int Service()
+    {
+        int service;
+        service= 2023-dateOfHiring;
+        return service;
+    }
+    double SalaryAugmentation( int service)
+    {
+        if (service<5)
+        salary+=salary*0.02;
+        else if (service>5 && service<10)
+            salary+=salary*0.1;
+        else
+        salary+=salary*0.15;
+        return salary;            
+    }
+    void displayInfo(int age, int service)
+    {
+        cout<<"Registration Number is: "<<registrationNumber<<endl;
+        cout<<"Name Surname "<<name<<surname<<endl;
+        cout<<"Age of Employee "<<age<<endl;
+        cout<<"Seniority of employee is: "<<service<<endl;
+        cout<<"salary before increasing: "<<salary<<endl;
+    }
+    void salaryAfterIncreasing(int aug)
+    {
+        cout<<"salary after increasing"<<aug;
+    }    
+}; int main()
+{
+    Employee E1, E2;
+    E1.AddEmployee1(101,"MERYEM","YUSUF", 1990,2015,10000);
+    E2.AddEmployee2();
+    int X=E1.Age();
+    int Y=E2.Age();
+    int Z=E1.Service();
+    int V=E2.Service();
+    cout<<"EMPLOYEE 1"<<endl;
+    E1.displayInfo(X, Z);
+    int A=E1.SalaryAugmentation(Z);
+    E1.salaryAfterIncreasing(A);
+    cout<<endl;
+    cout<<"EMPLOYEE 2"<<endl;
+    E2.displayInfo(Y,V);
+    int B= E2.SalaryAugmentation(V);
+    E2.salaryAfterIncreasing(B); }    
