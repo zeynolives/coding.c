@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+class Box{
+  private:
+  int lenght;
+  int height;
+  int breadht;
+  public:
+  Box(int x=2,int y=2,int z=2){
+      lenght=x;
+      height=y;
+      breadht=z;
+  }
+  int Volume(){
+      int res;
+      res=breadht*lenght*height;
+      return res;
+  }
+  int Compare(Box OtherBox){
+      if(this->Volume()>OtherBox.Volume()){
+          cout << "volume of box one is bigger than other box's" << endl;
+      }
+      else{
+          cout << "volume of box one is bigger than other box's" << endl;
+      }
+  }
+};
+int main(void){
+    Box B1(1,2,3);
+    Box B2(4,5,6);
+    cout<<B1.Volume()<<endl;
+    cout<<B2.Volume()<<endl;
+    B1.Compare(B2);
+}
